@@ -2,6 +2,7 @@
 
 import logging
 from datetime import datetime, timedelta, timezone
+import aiohttp
 from typing import Any
 
 from aiohttp import ClientSession
@@ -95,6 +96,7 @@ class TuyaPortalClient:
         url = "https://eu.platform.tuya.com/micro-app/cloud/api/v10/device/log/list"
 
         try:
+            self.session._cookie_jar = aiohttp.DummyCookieJar()
             async with self.session.post(
                 url, json=payload, headers=headers, ssl=True
             ) as resp:

@@ -63,7 +63,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         raise ConfigEntryAuthFailed(f"Authentication failed: {e}") from e
     except Exception as e:
         _LOGGER.error("Failed to set up Inkbird integration: %s", e)
-        raise ConfigEntryAuthFailed(e) from e
+        raise
 
     # Set up sensor platform
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
