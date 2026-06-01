@@ -1,5 +1,7 @@
-# pip install playwright
-# playwright install chromium
+# python3 -m venv venv
+# venv/bin/pip install playwright
+# venv/bin/playwright install chromium
+# venv/bin/python get_cookie.py
 
 from playwright.sync_api import sync_playwright
 
