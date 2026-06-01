@@ -42,7 +42,7 @@ class InkbirdConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         errors = {}
 
         if user_input is not None:
-            Validate credentials
+            # Validate credentials
             try:
                 await self._async_validate_auth(
                     user_input[CONF_COOKIE],
