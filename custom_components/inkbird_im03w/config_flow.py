@@ -43,20 +43,20 @@ class InkbirdConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         if user_input is not None:
             # Validate credentials
-            try:
-                await self._async_validate_auth(
-                    user_input[CONF_COOKIE],
-                    user_input[CONF_CSRF_TOKEN],
-                    user_input[CONF_PROJECT_CODE],
-                    user_input[CONF_SOURCE_ID],
-                    user_input[CONF_DEVICE_ID],
-                    user_input[CONF_REGION],
-                )
-            except AuthenticationError:
-                errors["base"] = "invalid_auth"
-            except Exception as e:
-                _LOGGER.error("Unexpected error during validation: %s", e)
-                errors["base"] = "unknown"
+            # try:
+            #     await self._async_validate_auth(
+            #         user_input[CONF_COOKIE],
+            #         user_input[CONF_CSRF_TOKEN],
+            #         user_input[CONF_PROJECT_CODE],
+            #         user_input[CONF_SOURCE_ID],
+            #         user_input[CONF_DEVICE_ID],
+            #         user_input[CONF_REGION],
+            #     )
+            # except AuthenticationError:
+            #     errors["base"] = "invalid_auth"
+            # except Exception as e:
+            #     _LOGGER.error("Unexpected error during validation: %s", e)
+            #     errors["base"] = "unknown"
 
             if not errors:
                 await self.async_set_unique_id(user_input[CONF_DEVICE_ID])
