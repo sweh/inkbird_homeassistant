@@ -4,6 +4,7 @@ import logging
 from datetime import timedelta
 
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .decoder import DecoderError, decode_inkbird_payload
@@ -60,7 +61,6 @@ class InkbirdCoordinator(DataUpdateCoordinator):
             return decoded
 
         except AuthenticationError as e:
-            # Will be handled by __init__.py and converted to ConfigEntryAuthFailed
-            raise e
+            raise ConfigEntryAuthFailed(f"Authentication failed: {e}") from e
         except (TuyaPortalError, DecoderError) as e:
             raise UpdateFailed(f"Failed to update Inkbird data: {e}") from e
