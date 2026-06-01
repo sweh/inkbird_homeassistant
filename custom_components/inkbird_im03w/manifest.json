@@ -1,0 +1,11 @@
+{
+  "domain": "inkbird_im03w",
+  "name": "Inkbird IM-03-W",
+  "codeowners": ["@sweh"],
+  "config_flow": true,
+  "documentation": "https://github.com/sweh/inkbird_homeassistant",
+  "requirements": [],
+  "iot_class": "cloud_polling",
+  "version": "0.1.0",
+  "homeassistant": "2024.1.0"
+}

@@ -1,0 +1,35 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Inkbird IM-03-W Configuration",
+        "description": "Enter credentials and settings to connect to the Tuya IoT Portal.\n\nYou need to extract the Cookie and CSRF token from your browser's DevTools (Network tab) after logging into the Tuya IoT Portal.",
+        "data": {
+          "cookie": "Cookie Header",
+          "csrf_token": "CSRF Token",
+          "project_code": "Project Code",
+          "source_id": "Source ID",
+          "device_id": "Device ID",
+          "region": "Region",
+          "poll_interval": "Poll Interval (seconds)"
+        }
+      },
+      "reauth": {
+        "title": "Reauthenticate Inkbird IM-03-W",
+        "description": "Your authentication to the Tuya IoT Portal has expired. Please provide new Cookie and CSRF token from the Tuya Portal DevTools.\n\nDevice: {device_id}",
+        "data": {
+          "cookie": "Cookie Header",
+          "csrf_token": "CSRF Token"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid Cookie or CSRF token. Please verify your credentials.",
+      "unknown": "An unexpected error occurred."
+    },
+    "abort": {
+      "already_configured": "Device is already configured.",
+      "reauth_successful": "Reauthentication successful."
+    }
+  }
+}
