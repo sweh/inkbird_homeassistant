@@ -8,6 +8,7 @@ from homeassistant import config_entries
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.data_entry_flow import FlowResult
 from homeassistant.exceptions import HomeAssistantError
+from homeassistant.helpers import aiohttp_client
 
 from .const import (
     CONF_COOKIE,
@@ -152,7 +153,7 @@ class InkbirdConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     ) -> None:
         """Validate authentication by attempting to fetch logs."""
         client = TuyaPortalClient(
-            self.hass.helpers.aiohttp.async_get_clientsession(),
+            aiohttp_client.async_get_clientsession(self.hass),
             cookie,
             csrf_token,
             project_code,

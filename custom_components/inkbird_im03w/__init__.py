@@ -7,6 +7,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed
+from homeassistant.helpers import aiohttp_client
 
 from .const import (
     CONF_COOKIE,
@@ -33,7 +34,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     try:
         # Create Tuya Portal client
         client = TuyaPortalClient(
-            hass.helpers.aiohttp.async_get_clientsession(),
+            aiohttp_client.async_get_clientsession(hass),
             entry.data[CONF_COOKIE],
             entry.data[CONF_CSRF_TOKEN],
             entry.data[CONF_PROJECT_CODE],
